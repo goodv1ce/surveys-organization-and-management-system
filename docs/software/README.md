@@ -174,3 +174,142 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 ## RESTfull сервіс для управління даними
 
+### Entity User.java
+```
+package ua.master.survey.api.entity;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name = "user")
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    @Column(name = "email")
+    private String email;
+    @Column(name = "password")
+    private String password;
+    @Column(name = "fullname")
+    private String fullname;
+}
+```
+### Repository UserRepository.java
+```
+package ua.master.survey.api.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import ua.master.survey.api.entity.User;
+
+public interface UserRepository extends JpaRepository<User, Integer> {
+}
+```
+### Service UserService.java
+```
+package ua.master.survey.api.service;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import ua.master.survey.api.entity.User;
+import ua.master.survey.api.repository.UserRepository;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+@RequiredArgsConstructor
+public class UserService {
+    private final UserRepository userRepository;
+
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
+
+    public void saveUser(User user) {
+        userRepository.save(user);
+    }
+
+    public User getUser(int id) {
+        User user = null;
+        Optional<User> optional = userRepository.findById(id);
+        if (optional.isPresent()) {
+            user = optional.get();
+        }
+        return user;
+    }
+
+    public void deleteUser(int id) {
+        userRepository.deleteById(id);
+    }
+}
+```
+### Controller RestController.java
+```
+package ua.master.survey.api.controller;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+import ua.master.survey.api.entity.User;
+import ua.master.survey.api.service.UserService;
+
+import java.util.List;
+
+@org.springframework.web.bind.annotation.RestController
+@RequestMapping("/api")
+@RequiredArgsConstructor
+public class RestController {
+    private final UserService userService;
+
+    @GetMapping("/users")
+    public List<User> getAllUsers() {
+        return userService.getAllUsers();
+    }
+
+    @GetMapping("/users/{id}")
+    public User getUserById(@PathVariable int id) {
+        return userService.getUser(id);
+    }
+
+    @PostMapping("/users")
+    public String addNewUser(@RequestBody User user) {
+        userService.saveUser(user);
+        return "User was added successfully!";
+    }
+
+    @PutMapping("/users")
+    public String updateUser(@RequestBody User user) {
+        userService.saveUser(user);
+        return "User was updated successfully!";
+    }
+
+    @DeleteMapping("/users/{id}")
+    public String deleteUser(@PathVariable int id) {
+        userService.deleteUser(id);
+        return "User with ID = " + id + " was deleted!";
+    }
+}
+```
+### Starter JavaApiApplication.java
+```
+package ua.master.survey.api;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class JavaApiApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(JavaApiApplication.class, args);
+    }
+
+}
+```
