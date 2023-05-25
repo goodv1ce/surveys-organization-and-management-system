@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Реалізація інформаційного та програмного забезпечення | Система організації та управління опитуваннями експертів</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    <link rel="icon" href="/surveys-organization-and-management-system/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="description" content="Лабораторні роботи з дисципліни &quot;Організація баз даних&quot;">
+    
+    <link rel="preload" href="/surveys-organization-and-management-system/assets/css/0.styles.945319ec.css" as="style"><link rel="preload" href="/surveys-organization-and-management-system/assets/js/app.e891ccc9.js" as="script"><link rel="preload" href="/surveys-organization-and-management-system/assets/js/2.aa726724.js" as="script"><link rel="preload" href="/surveys-organization-and-management-system/assets/js/23.6fb6c2d2.js" as="script"><link rel="prefetch" href="/surveys-organization-and-management-system/assets/js/10.6f6bcc39.js"><link rel="prefetch" href="/surveys-organization-and-management-system/assets/js/11.de26da93.js"><link rel="prefetch" href="/surveys-organization-and-management-system/assets/js/12.bdd2b4d8.js"><link rel="prefetch" href="/surveys-organization-and-management-system/assets/js/13.6bfb6623.js"><link rel="prefetch" href="/surveys-organization-and-management-system/assets/js/14.ec949c51.js"><link rel="prefetch" href="/surveys-organization-and-management-system/assets/js/15.47cd70be.js"><link rel="prefetch" href="/surveys-organization-and-management-system/assets/js/16.7b817429.js"><link rel="prefetch" href="/surveys-organization-and-management-system/assets/js/17.9558cc9d.js"><link rel="prefetch" href="/surveys-organization-and-management-system/assets/js/18.a3b63c8a.js"><link rel="prefetch" href="/surveys-organization-and-management-system/assets/js/19.e0376c07.js"><link rel="prefetch" href="/surveys-organization-and-management-system/assets/js/20.c79e5054.js"><link rel="prefetch" href="/surveys-organization-and-management-system/assets/js/21.61943f5a.js"><link rel="prefetch" href="/surveys-organization-and-management-system/assets/js/22.35df38aa.js"><link rel="prefetch" href="/surveys-organization-and-management-system/assets/js/24.88188c98.js"><link rel="prefetch" href="/surveys-organization-and-management-system/assets/js/25.89b5d83f.js"><link rel="prefetch" href="/surveys-organization-and-management-system/assets/js/26.07ca314a.js"><link rel="prefetch" href="/surveys-organization-and-management-system/assets/js/3.3cf1b1f2.js"><link rel="prefetch" href="/surveys-organization-and-management-system/assets/js/4.9feaefff.js"><link rel="prefetch" href="/surveys-organization-and-management-system/assets/js/5.2c22c5b4.js"><link rel="prefetch" href="/surveys-organization-and-management-system/assets/js/6.3b96e361.js"><link rel="prefetch" href="/surveys-organization-and-management-system/assets/js/7.b627d7a0.js"><link rel="prefetch" href="/surveys-organization-and-management-system/assets/js/8.13fe6818.js"><link rel="prefetch" href="/surveys-organization-and-management-system/assets/js/9.27a33d6f.js">
+    <link rel="stylesheet" href="/surveys-organization-and-management-system/assets/css/0.styles.945319ec.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/surveys-organization-and-management-system/" class="home-link router-link-active"><!----> <span class="site-name">Система організації та управління опитуваннями експертів</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/surveys-organization-and-management-system/" class="nav-link">
+  Початок
+</a></div> <a href="https://github.com/goodv1ce/surveys-organization-and-management-system" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Github
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/surveys-organization-and-management-system/" class="nav-link">
+  Початок
+</a></div> <a href="https://github.com/goodv1ce/surveys-organization-and-management-system" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Github
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><a href="/surveys-organization-and-management-system/intro/" class="sidebar-link">Вступ</a></li><li><section class="sidebar-group collapsable depth-0"><a href="/surveys-organization-and-management-system/requirements/" class="sidebar-heading clickable"><span>Розроблення загальних вимог до системи</span> <span class="arrow right"></span></a> <!----></section></li><li><a href="/surveys-organization-and-management-system/use%20cases/" class="sidebar-link">Розроблення вимог до функціональности системи</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/surveys-organization-and-management-system/use%20cases/#модель-прецедентів" class="sidebar-link">Модель прецедентів</a></li><li class="sidebar-sub-header"><a href="/surveys-organization-and-management-system/use%20cases/#схеми-використання-для-гостя" class="sidebar-link">Схеми використання для гостя.</a></li><li class="sidebar-sub-header"><a href="/surveys-organization-and-management-system/use%20cases/#схеми-використання-для-користувача" class="sidebar-link">Схеми використання для користувача.</a></li><li class="sidebar-sub-header"><a href="/surveys-organization-and-management-system/use%20cases/#сценаріи-авторизаціі-користувача" class="sidebar-link">Сценарій авторизації користувача</a></li><li class="sidebar-sub-header"><a href="/surveys-organization-and-management-system/use%20cases/#сценаріи-реєстраціі-нового-користувача" class="sidebar-link">Сценарій реєстрації нового користувача</a></li><li class="sidebar-sub-header"><a href="/surveys-organization-and-management-system/use%20cases/#сценаріи-створення-користувачем-опитування" class="sidebar-link">Сценарій створення користувачем опитування:</a></li><li class="sidebar-sub-header"><a href="/surveys-organization-and-management-system/use%20cases/#сценаріи-редагування-користувачем-опитування" class="sidebar-link">Сценарій редагування користувачем опитування:</a></li><li class="sidebar-sub-header"><a href="/surveys-organization-and-management-system/use%20cases/#сценаріи-видалення-користувачем-опитування" class="sidebar-link">Сценарій видалення користувачем опитування:</a></li><li class="sidebar-sub-header"><a href="/surveys-organization-and-management-system/use%20cases/#сценаріи-отримання-результатів-опитування" class="sidebar-link">Сценарій отримання результатів опитування:</a></li></ul></li><li><a href="/surveys-organization-and-management-system/design/" class="sidebar-link">Проектування інформаційного забезпечення</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/surveys-organization-and-management-system/design/#модель-бізнес-обʼєктів" class="sidebar-link">Модель бізнес-обʼєктів</a></li><li class="sidebar-sub-header"><a href="/surveys-organization-and-management-system/design/#er-модель" class="sidebar-link">ER-модель</a></li><li class="sidebar-sub-header"><a href="/surveys-organization-and-management-system/design/#реляціина-схема" class="sidebar-link">Реляційна схема</a></li></ul></li><li><a href="/surveys-organization-and-management-system/software/" aria-current="page" class="active sidebar-link">Реалізація інформаційного та програмного забезпечення</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/surveys-organization-and-management-system/software/#sql-скрипт-для-створення-на-початкового-наповнення-бази-даних" class="sidebar-link">SQL-скрипт для створення на початкового наповнення бази даних</a></li><li class="sidebar-sub-header"><a href="/surveys-organization-and-management-system/software/#restfull-сервіс-для-управління-даними" class="sidebar-link">RESTfull сервіс для управління даними</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/surveys-organization-and-management-system/software/#entity-user-java" class="sidebar-link">Entity User.java</a></li><li class="sidebar-sub-header"><a href="/surveys-organization-and-management-system/software/#repository-userrepository-java" class="sidebar-link">Repository UserRepository.java</a></li><li class="sidebar-sub-header"><a href="/surveys-organization-and-management-system/software/#service-userservice-java" class="sidebar-link">Service UserService.java</a></li><li class="sidebar-sub-header"><a href="/surveys-organization-and-management-system/software/#controller-restcontroller-java" class="sidebar-link">Controller RestController.java</a></li><li class="sidebar-sub-header"><a href="/surveys-organization-and-management-system/software/#starter-javaapiapplication-java" class="sidebar-link">Starter JavaApiApplication.java</a></li></ul></li></ul></li><li><a href="/surveys-organization-and-management-system/test/" class="sidebar-link">Тестування працездатності системи</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/surveys-organization-and-management-system/test/#запит-post-для-створення-нового-користувача" class="sidebar-link">Запит POST для створення нового користувача</a></li><li class="sidebar-sub-header"><a href="/surveys-organization-and-management-system/test/#запит-get-на-отримання-всіх-користувачів" class="sidebar-link">Запит GET на отримання всіх користувачів</a></li><li class="sidebar-sub-header"><a href="/surveys-organization-and-management-system/test/#запит-get-на-отримання-користувача-за-id" class="sidebar-link">Запит GET на отримання користувача за ID</a></li><li class="sidebar-sub-header"><a href="/surveys-organization-and-management-system/test/#запит-put-на-оновлення-користувача-за-ідентифікатором" class="sidebar-link">Запит PUT на оновлення користувача за ідентифікатором</a></li><li class="sidebar-sub-header"><a href="/surveys-organization-and-management-system/test/#запит-delete-на-видалення-користувача-за-ідентифікатором" class="sidebar-link">Запит DELETE на видалення користувача за ідентифікатором</a></li></ul></li><li><a href="/surveys-organization-and-management-system/conclusion/" class="sidebar-link">Висновки</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="реалізація-інформаціиного-та-програмного-забезпечення"><a href="#реалізація-інформаціиного-та-програмного-забезпечення" class="header-anchor">#</a> Реалізація інформаційного та програмного забезпечення</h1> <h2 id="sql-скрипт-для-створення-на-початкового-наповнення-бази-даних"><a href="#sql-скрипт-для-створення-на-початкового-наповнення-бази-даних" class="header-anchor">#</a> SQL-скрипт для створення на початкового наповнення бази даних</h2> <p>-- MySQL Script generated by MySQL Workbench
+-- Thu May 25 17:59:40 2023
+-- Model: New Model    Version: 1.0
+-- MySQL Workbench Forward Engineering</p> <p>SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,
+NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';</p> <hr> <p>-- Schema mydb</p> <hr> <p>DROP SCHEMA IF EXISTS <code>mydb</code> ;</p> <hr> <p>-- Schema mydb</p> <hr> <p>CREATE SCHEMA IF NOT EXISTS <code>mydb</code> DEFAULT CHARACTER SET utf8 ;
+USE <code>mydb</code> ;</p> <hr> <p>-- Table <code>mydb</code>.<code>user</code></p> <hr> <p>DROP TABLE IF EXISTS <code>mydb</code>.<code>user</code> ;</p> <p>CREATE TABLE IF NOT EXISTS <code>mydb</code>.<code>user</code> (
+<code>id</code> INT NOT NULL AUTO_INCREMENT,
+<code>email</code> VARCHAR(255) NOT NULL,
+<code>password</code> VARCHAR(255) NOT NULL,
+<code>fullname</code> VARCHAR(255) NULL,
+PRIMARY KEY (<code>id</code>),
+UNIQUE INDEX <code>id_UNIQUE</code> (<code>id</code> ASC) VISIBLE,
+UNIQUE INDEX <code>email_UNIQUE</code> (<code>email</code> ASC) VISIBLE)
+ENGINE = InnoDB;</p> <hr> <p>-- Table <code>mydb</code>.<code>quiz</code></p> <hr> <p>DROP TABLE IF EXISTS <code>mydb</code>.<code>quiz</code> ;</p> <p>CREATE TABLE IF NOT EXISTS <code>mydb</code>.<code>quiz</code> (
+<code>id</code> INT NOT NULL AUTO_INCREMENT,
+<code>text</code> VARCHAR(255) NOT NULL,
+<code>topic</code> VARCHAR(255) NOT NULL,
+<code>creation_date</code> DATETIME NOT NULL,
+<code>creator_id</code> INT NOT NULL,
+PRIMARY KEY (<code>id</code>, <code>creator_id</code>),
+INDEX <code>fk_quiz_user_idx</code> (<code>creator_id</code> ASC) VISIBLE,
+UNIQUE INDEX <code>id_UNIQUE</code> (<code>id</code> ASC) VISIBLE,
+CONSTRAINT <code>fk_quiz_user</code>
+FOREIGN KEY (<code>creator_id</code>)
+REFERENCES <code>mydb</code>.<code>user</code> (<code>id</code>)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION)
+ENGINE = InnoDB;</p> <hr> <p>-- Table <code>mydb</code>.<code>question</code></p> <hr> <p>DROP TABLE IF EXISTS <code>mydb</code>.<code>question</code> ;</p> <p>CREATE TABLE IF NOT EXISTS <code>mydb</code>.<code>question</code> (
+<code>id</code> INT NOT NULL AUTO_INCREMENT,
+<code>text</code> VARCHAR(255) NOT NULL,
+<code>option_type</code> VARCHAR(255) NOT NULL,
+<code>quiz_id</code> INT NOT NULL,
+PRIMARY KEY (<code>id</code>, <code>quiz_id</code>),
+UNIQUE INDEX <code>id_UNIQUE</code> (<code>id</code> ASC) VISIBLE,
+INDEX <code>fk_question_quiz1_idx</code> (<code>quiz_id</code> ASC) VISIBLE,
+CONSTRAINT <code>fk_question_quiz1</code>
+FOREIGN KEY (<code>quiz_id</code>)
+REFERENCES <code>mydb</code>.<code>quiz</code> (<code>id</code>)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION)
+ENGINE = InnoDB;</p> <hr> <p>-- Table <code>mydb</code>.<code>option</code></p> <hr> <p>DROP TABLE IF EXISTS <code>mydb</code>.<code>option</code> ;</p> <p>CREATE TABLE IF NOT EXISTS <code>mydb</code>.<code>option</code> (
+<code>id</code> INT NOT NULL AUTO_INCREMENT,
+<code>text</code> VARCHAR(255) NOT NULL,
+<code>question_id</code> INT NOT NULL,
+PRIMARY KEY (<code>id</code>),
+UNIQUE INDEX <code>id_UNIQUE</code> (<code>id</code> ASC) VISIBLE,
+INDEX <code>fk_option_question1_idx</code> (<code>question_id</code> ASC) VISIBLE,
+CONSTRAINT <code>fk_option_question1</code>
+FOREIGN KEY (<code>question_id</code>)
+REFERENCES <code>mydb</code>.<code>question</code> (<code>id</code>)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION)
+ENGINE = InnoDB;</p> <hr> <p>-- Table <code>mydb</code>.<code>choosen_option</code></p> <hr> <p>DROP TABLE IF EXISTS <code>mydb</code>.<code>choosen_option</code> ;</p> <p>CREATE TABLE IF NOT EXISTS <code>mydb</code>.<code>choosen_option</code> (
+<code>option_id</code> INT NOT NULL,
+<code>question_id</code> INT NOT NULL,
+<code>quiz_id</code> INT NOT NULL,
+<code>user_id</code> INT NOT NULL,
+INDEX <code>fk_choosen_option_option1_idx</code> (<code>option_id</code> ASC) VISIBLE,
+INDEX <code>fk_choosen_option_question1_idx</code> (<code>question_id</code> ASC) VISIBLE,
+INDEX <code>fk_choosen_option_quiz1_idx</code> (<code>quiz_id</code> ASC) VISIBLE,
+INDEX <code>fk_choosen_option_user1_idx</code> (<code>user_id</code> ASC) VISIBLE,
+CONSTRAINT <code>fk_choosen_option_option1</code>
+FOREIGN KEY (<code>option_id</code>)
+REFERENCES <code>mydb</code>.<code>option</code> (<code>id</code>)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION,
+CONSTRAINT <code>fk_choosen_option_question1</code>
+FOREIGN KEY (<code>question_id</code>)
+REFERENCES <code>mydb</code>.<code>question</code> (<code>id</code>)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION,
+CONSTRAINT <code>fk_choosen_option_quiz1</code>
+FOREIGN KEY (<code>quiz_id</code>)
+REFERENCES <code>mydb</code>.<code>quiz</code> (<code>id</code>)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION,
+CONSTRAINT <code>fk_choosen_option_user1</code>
+FOREIGN KEY (<code>user_id</code>)
+REFERENCES <code>mydb</code>.<code>user</code> (<code>id</code>)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION)
+ENGINE = InnoDB;</p> <hr> <p>-- Table <code>mydb</code>.<code>answer</code></p> <hr> <p>DROP TABLE IF EXISTS <code>mydb</code>.<code>answer</code> ;</p> <p>CREATE TABLE IF NOT EXISTS <code>mydb</code>.<code>answer</code> (
+<code>option_id</code> INT NOT NULL,
+<code>question_id</code> INT NOT NULL,
+<code>quiz_id</code> INT NOT NULL,
+INDEX <code>fk_answer_option1_idx</code> (<code>option_id</code> ASC) VISIBLE,
+INDEX <code>fk_answer_question1_idx</code> (<code>question_id</code> ASC) VISIBLE,
+INDEX <code>fk_answer_quiz1_idx</code> (<code>quiz_id</code> ASC) VISIBLE,
+CONSTRAINT <code>fk_answer_option1</code>
+FOREIGN KEY (<code>option_id</code>)
+REFERENCES <code>mydb</code>.<code>option</code> (<code>id</code>)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION,
+CONSTRAINT <code>fk_answer_question1</code>
+FOREIGN KEY (<code>question_id</code>)
+REFERENCES <code>mydb</code>.<code>question</code> (<code>id</code>)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION,
+CONSTRAINT <code>fk_answer_quiz1</code>
+FOREIGN KEY (<code>quiz_id</code>)
+REFERENCES <code>mydb</code>.<code>quiz</code> (<code>id</code>)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION)
+ENGINE = InnoDB;</p> <p>SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;</p> <h2 id="restfull-сервіс-для-управління-даними"><a href="#restfull-сервіс-для-управління-даними" class="header-anchor">#</a> RESTfull сервіс для управління даними</h2> <h3 id="entity-user-java"><a href="#entity-user-java" class="header-anchor">#</a> Entity User.java</h3> <div class="language- extra-class"><pre class="language-text"><code>package ua.master.survey.api.entity;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name = &quot;user&quot;)
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    @Column(name = &quot;email&quot;)
+    private String email;
+    @Column(name = &quot;password&quot;)
+    private String password;
+    @Column(name = &quot;fullname&quot;)
+    private String fullname;
+}
+</code></pre></div><h3 id="repository-userrepository-java"><a href="#repository-userrepository-java" class="header-anchor">#</a> Repository UserRepository.java</h3> <div class="language- extra-class"><pre class="language-text"><code>package ua.master.survey.api.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import ua.master.survey.api.entity.User;
+
+public interface UserRepository extends JpaRepository&lt;User, Integer&gt; {
+}
+</code></pre></div><h3 id="service-userservice-java"><a href="#service-userservice-java" class="header-anchor">#</a> Service UserService.java</h3> <div class="language- extra-class"><pre class="language-text"><code>package ua.master.survey.api.service;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import ua.master.survey.api.entity.User;
+import ua.master.survey.api.repository.UserRepository;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+@RequiredArgsConstructor
+public class UserService {
+    private final UserRepository userRepository;
+
+    public List&lt;User&gt; getAllUsers() {
+        return userRepository.findAll();
+    }
+
+    public void saveUser(User user) {
+        userRepository.save(user);
+    }
+
+    public User getUser(int id) {
+        User user = null;
+        Optional&lt;User&gt; optional = userRepository.findById(id);
+        if (optional.isPresent()) {
+            user = optional.get();
+        }
+        return user;
+    }
+
+    public void deleteUser(int id) {
+        userRepository.deleteById(id);
+    }
+}
+</code></pre></div><h3 id="controller-restcontroller-java"><a href="#controller-restcontroller-java" class="header-anchor">#</a> Controller RestController.java</h3> <div class="language- extra-class"><pre class="language-text"><code>package ua.master.survey.api.controller;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+import ua.master.survey.api.entity.User;
+import ua.master.survey.api.service.UserService;
+
+import java.util.List;
+
+@org.springframework.web.bind.annotation.RestController
+@RequestMapping(&quot;/api&quot;)
+@RequiredArgsConstructor
+public class RestController {
+    private final UserService userService;
+
+    @GetMapping(&quot;/users&quot;)
+    public List&lt;User&gt; getAllUsers() {
+        return userService.getAllUsers();
+    }
+
+    @GetMapping(&quot;/users/{id}&quot;)
+    public User getUserById(@PathVariable int id) {
+        return userService.getUser(id);
+    }
+
+    @PostMapping(&quot;/users&quot;)
+    public String addNewUser(@RequestBody User user) {
+        userService.saveUser(user);
+        return &quot;User was added successfully!&quot;;
+    }
+
+    @PutMapping(&quot;/users&quot;)
+    public String updateUser(@RequestBody User user) {
+        userService.saveUser(user);
+        return &quot;User was updated successfully!&quot;;
+    }
+
+    @DeleteMapping(&quot;/users/{id}&quot;)
+    public String deleteUser(@PathVariable int id) {
+        userService.deleteUser(id);
+        return &quot;User with ID = &quot; + id + &quot; was deleted!&quot;;
+    }
+}
+</code></pre></div><h3 id="starter-javaapiapplication-java"><a href="#starter-javaapiapplication-java" class="header-anchor">#</a> Starter JavaApiApplication.java</h3> <div class="language- extra-class"><pre class="language-text"><code>package ua.master.survey.api;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class JavaApiApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(JavaApiApplication.class, args);
+    }
+
+}
+</code></pre></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Останнє оновлення:</span> <span class="time">5/25/2023, 7:14:20 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/surveys-organization-and-management-system/design/" class="prev">
+        Проектування інформаційного забезпечення
+      </a></span> <span class="next"><a href="/surveys-organization-and-management-system/test/">
+        Тестування працездатності системи
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/surveys-organization-and-management-system/assets/js/app.e891ccc9.js" defer></script><script src="/surveys-organization-and-management-system/assets/js/2.aa726724.js" defer></script><script src="/surveys-organization-and-management-system/assets/js/23.6fb6c2d2.js" defer></script>
+  </body>
+</html>
